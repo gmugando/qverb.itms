@@ -8,6 +8,8 @@ namespace QverbITMS.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            //To force the user to login to see any content using ASP.NET MVC 4
+            filters.Add(new AuthorizeAttribute());
         }
     }
 }
