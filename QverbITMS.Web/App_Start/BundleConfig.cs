@@ -8,21 +8,52 @@ namespace QverbITMS.Web
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            bundles.UseCdn = true;
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/jquery-ui-{version}.js"));
+            // javascript
+            bundles.Add(new ScriptBundle("~/bundles/adminlte/plugins").Include(
+                //Morris charts
+               "~/Scripts/plugins/morris/morris.min.js",
+                // Sparkline 
+               "~/Scripts/plugins/sparkline/jquery.sparkline.min.js",
+                // jvectormap 
+               "~/Scripts/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js",
+               "~/Scripts/plugins/jvectormap/jquery-jvectormap-world-mill-en.js",
+                // jQuery Knob Chart 
+               "~/Scripts/plugins/jqueryKnob/jquery.knob.js",
+                // daterangepicker
+               "~/Scripts/plugins/daterangepicker/daterangepicker.js",
+                // datepicker 
+               "~/Scripts/plugins/datepicker/bootstrap-datepicker.js",
+                // Bootstrap WYSIHTML5 
+               "~/Scripts/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js",
+                // iCheck 
+               "~/Scripts/plugins/iCheck/icheck.min.js",
+                // AdminLTE App
+               "~/Scripts/AdminLTE/app.js",
+                // AdminLTE dashboard demo (This is only for demo purposes) 
+               "~/Scripts/AdminLTE/dashboard.js",
+                // AdminLTE for demo purposes 
+               "~/Scripts/AdminLTE/demo.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+            //using CDN with MVC bundles - ref http://venkatbaggu.com/use-cdn-bundle-config-in-asp-net-mvc/
+            var jqueryBundle = new ScriptBundle("~/bundles/jquery", "http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js").Include(
+                 "~/Scripts/jquery-{version}.js");
+            bundles.Add(jqueryBundle);
 
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-            
+            var bootstrapBundle = new ScriptBundle("~/bundles/bootstrap", "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js").Include(
+            "~/Scripts/bootstrapcdn-{version}.js");
+            bundles.Add(bootstrapBundle);
+
+            var jqueryuiBundle = new ScriptBundle("~/bundles/jqueryui", "http://code.jquery.com/ui/1.11.1/jquery-ui.min.js").Include(
+               "~/Scripts/bootstrapcdn-{version}.js");
+            bundles.Add(jqueryuiBundle);
+
+            var morrisBundle = new ScriptBundle("~/bundles/morris", "http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js").Include(
+                "~/Scripts/bootstrapcdn-{version}.js");
+            bundles.Add(morrisBundle);
+
+            // css
             bundles.Add(new StyleBundle("~/Content/themes/adminlte/css").Include(
                 // Morris chart
                    "~/Content/themes/adminlte/css/morris/morris.css",
