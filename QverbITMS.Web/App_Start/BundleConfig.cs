@@ -67,6 +67,11 @@ namespace QverbITMS.Web
                    "~/Content/themes/adminlte/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css",
                 // Theme style
                     "~/Content/themes/adminlte/css/AdminLTE.css"));
+
+            //adminLte css 
+            bundles.Add(new StyleBundle("~/Content/themes/adminlte-only/css").Include(
+                // Theme style
+                    "~/Content/themes/adminlte/css/AdminLTE.css"));
         }
     }
 }
