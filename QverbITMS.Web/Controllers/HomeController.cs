@@ -12,6 +12,8 @@ namespace QverbITMS.Web.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Dashboard";
+            ViewBag.Header = "Dashboard";
+            ViewBag.SubHeader = "Manage";
 
             return View();
         }
