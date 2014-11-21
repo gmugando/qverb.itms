@@ -27,7 +27,7 @@
             </a>
         </li>
         <li>
-            <a href="pages/widgets.html">
+            <a href=@Url.Action("Default","Incidents")>
                 <i class="fa fa-th"></i> <span>Incidents</span> <small class="badge pull-right bg-green">new</small>
             </a>
         </li>
@@ -38,9 +38,9 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href="pages/charts/morris.html"><i class="fa fa-angle-double-right"></i> Incidents</a></li>
-                <li><a href="pages/charts/flot.html"><i class="fa fa-angle-double-right"></i> Accidents</a></li>
-                <li><a href="pages/charts/inline.html"><i class="fa fa-angle-double-right"></i> Tasks</a></li>
+                <li><a href=@Url.Action("Incidents", "Charts")><i class="fa fa-angle-double-right"></i> Incidents</a></li>
+                <li><a href=@Url.Action("Accidents", "Charts")><i class="fa fa-angle-double-right"></i> Accidents</a></li>
+                <li><a href=@Url.Action("Tasks", "Charts")><i class="fa fa-angle-double-right"></i> Tasks</a></li>
             </ul>
         </li>
         <li class="treeview">
@@ -50,8 +50,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href="pages/UI/general.html"><i class="fa fa-angle-double-right"></i> Tasks</a></li>
-                <li><a href="pages/UI/icons.html"><i class="fa fa-angle-double-right"></i> Calendar</a></li>
+                <li><a href=@Url.Action("Tasks", "Projects")><i class="fa fa-angle-double-right"></i> Tasks</a></li>
+                <li><a href=@Url.Action("Calendar", "Projects")><i class="fa fa-angle-double-right"></i> Calendar</a></li>
                 @*<li><a href="pages/UI/buttons.html"><i class="fa fa-angle-double-right"></i> Buttons</a></li>
                 <li><a href="pages/UI/sliders.html"><i class="fa fa-angle-double-right"></i> Sliders</a></li>
                 <li><a href="pages/UI/timeline.html"><i class="fa fa-angle-double-right"></i> Timeline</a></li>*@
@@ -63,10 +63,10 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li><a href="pages/forms/general.html"><i class="fa fa-angle-double-right"></i> Users</a></li>
-                <li><a href="pages/forms/advanced.html"><i class="fa fa-angle-double-right"></i> Task Categories</a></li>
-                <li><a href="pages/forms/editors.html"><i class="fa fa-angle-double-right"></i> Incident Categories</a></li>
-                <li><a href="pages/forms/editors.html"><i class="fa fa-angle-double-right"></i> Sites</a></li>
+                <li><a href=@Url.Action("Users", "System")><i class="fa fa-angle-double-right"></i> Users</a></li>
+                <li><a href=@Url.Action("TaskCategories", "System")><i class="fa fa-angle-double-right"></i> Task Categories</a></li>
+                <li><a href=@Url.Action("IncidentCategories", "System")><i class="fa fa-angle-double-right"></i> Incident Categories</a></li>
+                <li><a href=@Url.Action("Sites", "System")><i class="fa fa-angle-double-right"></i> Sites</a></li>
             </ul>
         </li>
         @*<li class="treeview">
