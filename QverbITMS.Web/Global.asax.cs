@@ -18,6 +18,11 @@ namespace QverbITMS.Web
         {
             AreaRegistration.RegisterAllAreas();
 
+            BundleTable.Bundles.IgnoreList.Clear(); // apparently, IgnoreList included .min.js in debug
+            BundleTable.Bundles.IgnoreList.Ignore(".intellisense.js", OptimizationMode.Always);
+            BundleTable.Bundles.IgnoreList.Ignore("-vsdoc.js", OptimizationMode.Always);
+            BundleTable.Bundles.IgnoreList.Ignore(".debug.js", OptimizationMode.Always);
+
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
