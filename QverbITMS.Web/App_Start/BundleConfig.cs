@@ -34,7 +34,16 @@ namespace QverbITMS.Web
                 // AdminLTE dashboard demo (This is only for demo purposes) 
                "~/Scripts/AdminLTE/dashboard.js",
                 // AdminLTE for demo purposes 
-               "~/Scripts/AdminLTE/demo.js"));
+               "~/Scripts/AdminLTE/demo.js",
+               // Bootstrap validation js
+               "~/Scripts/plugins/validation/bootstrap-validation.js"));
+
+             // javascript
+            bundles.Add(new ScriptBundle("~/bundles/adminlte/plugins/dataTable").Include(
+                // dataTable 
+               "~/Scripts/plugins/datatables/jquery.dataTables.js",
+                // bootstrap dataTable
+               "~/Scripts/plugins/datatables/dataTables.bootstrap.js"));
 
             //using CDN with MVC bundles - ref http://venkatbaggu.com/use-cdn-bundle-config-in-asp-net-mvc/
             var jqueryBundle = new ScriptBundle("~/bundles/jquery", "http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js").Include(
@@ -72,6 +81,11 @@ namespace QverbITMS.Web
             bundles.Add(new StyleBundle("~/Content/themes/adminlte-only/css").Include(
                 // Theme style
                     "~/Content/themes/adminlte/css/AdminLTE.css"));
+
+            // datatables
+            bundles.Add(new StyleBundle("~/Content/themes/adminlte/css/dataTables").Include(
+                // Theme style
+                    "~/Content/themes/adminlte/css/datatables/dataTables.bootstrap.css"));
         }
     }
 }
