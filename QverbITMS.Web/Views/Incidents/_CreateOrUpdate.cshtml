@@ -1,0 +1,51 @@
+﻿@model QverbITMS.Web.ViewModels.IncidentVM
+
+@{
+    ViewBag.Title = "_CreateOrUpdate";
+}
+
+<div class="col-md-6">
+    <!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">New Incident</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        @using (Html.BeginForm("Create", "Incidents"))
+        {
+            @Html.ValidationSummary()
+            @*<form role="form">*@
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="incidentName">Incident Title</label>
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Incident Title" })
+                    </div>
+                    <div class="form-group">
+                        <label for="incidentDescr">Incident Description</label>
+                        @Html.TextAreaFor(model => model.Descr, 3, 20, new { @class = "form-control", placeholder = "Incident Description" })
+                    </div>
+                    <div class="form-group">
+                        <label for="percentageComplete">Percentage Complete</label>
+                        @Html.TextBoxFor(model => model.PercentageComplete, new { @class = "form-control", placeholder = "Percentage Complete" })
+                    </div>
+                    <div class="form-group">
+                        <label for="incidentSupportFile">File input</label>
+                        <input type="file" id="incidentSupportFile">
+                        <p class="help-block">Upload incident documentation.</p>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Check me out
+                        </label>
+                    </div>
+                </div><!-- /.box-body -->
+            
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="button" class="btn btn-warning"  value="Cancel"
+                           onclick="javascript:document.location.href='@Url.Action("Default", "Incidents")'" />
+                </div>
+            @*</form>*@
+        }
+    </div><!-- /.box -->
+</div>
