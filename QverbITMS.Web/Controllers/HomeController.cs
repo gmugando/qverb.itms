@@ -1,4 +1,7 @@
-﻿using System;
+﻿using QverbITMS.Services;
+using QverbITMS.Services.Interfaces;
+using QverbITMS.Web.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +11,24 @@ namespace QverbITMS.Web.Controllers
 {
     public class HomeController : Controller
     {
+
+        #region Fields
+
+        private readonly IIncidentService _incidentService;
+
+        #endregion
+
+         #region Constructors
+
+        public HomeController()
+        {
+            //todo : use DI
+            _incidentService = new IncidentService();
+        }
+
+        #endregion
+
+
         [Authorize]
         public ActionResult Index()
         {
@@ -15,7 +36,13 @@ namespace QverbITMS.Web.Controllers
             ViewBag.Header = "Dashboard";
             ViewBag.SubHeader = "Manage";
 
-            return View();
+            DashboardVM dash = new DashboardVM();
+            dash.NewIncidents = _incidentService.GetActiveIncidents().Count();
+            dash.ResolvedIncidents = _incidentService.GetIncidentsPercentageByStatus(true);
+            dash.UserReg = 10;
+
+
+            return View(dash);
         }
 
         [Authorize]

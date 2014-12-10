@@ -41,6 +41,9 @@ namespace QverbITMS.Web.Controllers
 
         public ActionResult Default()
         {
+            ViewBag.Header = "Incidents";
+            ViewBag.SubHeader = "Manage";
+
             var incidents = _incidentService.GetActiveIncidents();
             var x = incidents;
             return View(incidents);
@@ -49,6 +52,8 @@ namespace QverbITMS.Web.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.Header = "Create Incident";
+            ViewBag.SubHeader = "Manage";
             var incidentVM = new IncidentVM();
             return View(incidentVM);
         }
