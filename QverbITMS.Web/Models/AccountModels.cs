@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.ComponentModel.DataAnnotations;
+//using System.ComponentModel.DataAnnotations.Schema;
+//using System.Data.Entity;
+//using System.Globalization;
+//using System.Web.Mvc;
+//using System.Web.Security;
+//using Annotate = System.ComponentModel.DataAnnotations;
+//using AnnotateSchema = System.ComponentModel.DataAnnotations.Schema;
+//using WebMvc = System.Web.Mvc;
+//using DataEntity = System.Data.Entity;
+
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
-using System.Globalization;
-using System.Web.Mvc;
-using System.Web.Security;
-
 namespace QverbITMS.Web.Models
 {
     public class UsersContext : DbContext
@@ -19,13 +26,13 @@ namespace QverbITMS.Web.Models
         public DbSet<UserProfile> UserProfiles { get; set; }
     }
 
-    [Table("UserProfile")]
     public class UserProfile
     {
         [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public string Email { get; set; }
+        public bool Male { get; set; }
     }
 
     public class RegisterExternalLoginModel
@@ -87,6 +94,15 @@ namespace QverbITMS.Web.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [EmailAddress(ErrorMessage="Please enter a valid email address", ErrorMessageResourceName="", ErrorMessageResourceType=null)]
+        [Display(Name = "Email Address")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Sex")]
+        public bool Male { get; set; }
     }
 
     public class ExternalLogin
