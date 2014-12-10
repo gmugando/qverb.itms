@@ -5,7 +5,13 @@ using System.Text;
 
 namespace QverbITMS.Core.Domain
 {
-    class Project
+    public class Project
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Descr { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+
     }
 }
