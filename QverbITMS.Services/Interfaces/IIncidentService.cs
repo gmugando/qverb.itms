@@ -18,5 +18,9 @@ namespace QverbITMS.Services.Interfaces
         void Insert(Incident incident);
 
         void Update(Incident incident);
+
+        IQueryable<Incident> GetIncidentsByStatus(bool status);
+
+        Int32 GetIncidentsPercentageByStatus(bool status);
     }
 }
