@@ -200,6 +200,11 @@ namespace QverbITMS.Data
 
         public bool AutoCommitEnabled { get; set; }
 
+        public IQueryable<T> GetByFilter(Expression<Func<T, bool>> filter)
+        {
+            return this.Entities.Where(filter);
+        }
+
         #endregion
 
         #region Helpers
