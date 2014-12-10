@@ -1,4 +1,7 @@
-﻿@{
+﻿@model QverbITMS.Web.ViewModels.DashboardVM
+
+
+@{
     ViewBag.Title = "Dashboard";
 }
 
@@ -14,7 +17,7 @@
             <div class="small-box bg-aqua">
                 <div class="inner">
                     <h3>
-                        150
+                        @Model.NewIncidents
                     </h3>
                     <p>
                         New Incidents
@@ -33,7 +36,7 @@
             <div class="small-box bg-green">
                 <div class="inner">
                     <h3>
-                        53<sup style="font-size: 20px">%</sup>
+                        @Model.ResolvedIncidents<sup style="font-size: 20px">%</sup>
                     </h3>
                     <p>
                         Incidents Resolved
@@ -52,7 +55,7 @@
             <div class="small-box bg-yellow">
                 <div class="inner">
                     <h3>
-                        44
+                        @Model.UserReg
                     </h3>
                     <p>
                         User Registrations
