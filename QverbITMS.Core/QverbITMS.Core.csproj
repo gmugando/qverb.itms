@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>QverbITMS.Core</RootNamespace>
     <AssemblyName>QverbITMS.Core</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,19 +30,96 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.1.5\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BaseEntity.cs" />
+    <Compile Include="Data\DataProviderFactory.cs" />
+    <Compile Include="Data\DataSettings.cs" />
+    <Compile Include="Data\EntityState.cs" />
+    <Compile Include="Data\Hooks\HookedEntityEntry.cs" />
+    <Compile Include="Data\Hooks\HookEntityMetadata.cs" />
+    <Compile Include="Data\Hooks\HooksEventConsumer.cs" />
+    <Compile Include="Data\Hooks\IHook.cs" />
+    <Compile Include="Data\Hooks\IPostActionHook .cs" />
+    <Compile Include="Data\Hooks\IPreActionHook.cs" />
+    <Compile Include="Data\Hooks\PostActionHook.cs" />
+    <Compile Include="Data\Hooks\PostDeleteHook.cs" />
+    <Compile Include="Data\Hooks\PostInsertHook.cs" />
+    <Compile Include="Data\Hooks\PostUpdateHook.cs" />
+    <Compile Include="Data\Hooks\PreActionHook.cs" />
+    <Compile Include="Data\Hooks\PreDeleteHook.cs" />
+    <Compile Include="Data\Hooks\PreInsertHook.cs" />
+    <Compile Include="Data\Hooks\PreUpdateHook.cs" />
+    <Compile Include="Data\IDataProvider.cs" />
+    <Compile Include="Data\IDbContext.cs" />
+    <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Domain\Incident.cs" />
+    <Compile Include="Domain\IncidentCategory.cs" />
+    <Compile Include="Domain\Project.cs" />
+    <Compile Include="Domain\Task.cs" />
+    <Compile Include="Domain\TaskCategory.cs" />
+    <Compile Include="Domain\SystemUserProfile.cs" />
+    <Compile Include="Enums\Priority.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\ConversionExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Extensions\MiscExtensions.cs" />
+    <Compile Include="Extensions\RouteData.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="IMergedData.cs" />
+    <Compile Include="Infrastructure\AppDomainTypeFinder.cs" />
+    <Compile Include="Infrastructure\DependencyManagement\ContainerManager.cs" />
+    <Compile Include="Infrastructure\DependencyManagement\AutofacLifetimeScopeProvider.cs" />
+    <Compile Include="Infrastructure\DependencyManagement\AutofacRequestLifetimeHttpModule.cs" />
+    <Compile Include="Infrastructure\DependencyManagement\IDependencyRegistrar.cs" />
+    <Compile Include="Infrastructure\EngineContext.cs" />
+    <Compile Include="Infrastructure\Error.cs" />
+    <Compile Include="Infrastructure\IEngine.cs" />
+    <Compile Include="Infrastructure\RegularExpressions.cs" />
+    <Compile Include="Infrastructure\WebAppTypeFinder.cs" />
+    <Compile Include="IPageable.cs" />
+    <Compile Include="ITypeFinder.cs" />
+    <Compile Include="IWorkContext.cs" />
+    <Compile Include="PagedList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QverbITMSEngine.cs" />
+    <Compile Include="QverbITMSException.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
