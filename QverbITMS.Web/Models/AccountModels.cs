@@ -4,16 +4,11 @@
 //using System.ComponentModel.DataAnnotations.Schema;
 //using System.Data.Entity;
 //using System.Globalization;
-//using System.Web.Mvc;
-//using System.Web.Security;
-//using Annotate = System.ComponentModel.DataAnnotations;
-//using AnnotateSchema = System.ComponentModel.DataAnnotations.Schema;
-//using WebMvc = System.Web.Mvc;
-//using DataEntity = System.Data.Entity;
-
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
+
+
 namespace QverbITMS.Web.Models
 {
     public class UsersContext : DbContext
@@ -29,7 +24,7 @@ namespace QverbITMS.Web.Models
     public class UserProfile
     {
         [Key]
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
         public bool Male { get; set; }

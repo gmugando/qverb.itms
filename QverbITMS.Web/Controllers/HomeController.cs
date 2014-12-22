@@ -20,10 +20,10 @@ namespace QverbITMS.Web.Controllers
 
          #region Constructors
 
-        public HomeController()
+        public HomeController(IIncidentService incidentService)
         {
             //todo : use DI
-            _incidentService = new IncidentService();
+            _incidentService = incidentService;
         }
 
         #endregion

@@ -1,8 +1,22 @@
 ﻿@model QverbITMS.Web.ViewModels.IncidentVM
+@using QverbITMS.Web.Framework.Extensions;
+
 
 @{
     ViewBag.Title = "_CreateOrUpdate";
 }
+
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">New Incident</h3>
+        </div><!-- /.box-header -->
+    </div>
+</div>
 
 <div class="col-md-6">
     <!-- general form elements -->
@@ -11,41 +25,88 @@
             <h3 class="box-title">New Incident</h3>
         </div><!-- /.box-header -->
         <!-- form start -->
-        @using (Html.BeginForm("Create", "Incidents"))
+        @using (Html.BeginForm())
         {
             @Html.ValidationSummary()
             @*<form role="form">*@
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="incidentName">Incident Title</label>
-                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Incident Title" })
-                    </div>
-                    <div class="form-group">
-                        <label for="incidentDescr">Incident Description</label>
-                        @Html.TextAreaFor(model => model.Descr, 3, 20, new { @class = "form-control", placeholder = "Incident Description" })
-                    </div>
-                    <div class="form-group">
-                        <label for="percentageComplete">Percentage Complete</label>
-                        @Html.TextBoxFor(model => model.PercentageComplete, new { @class = "form-control", placeholder = "Percentage Complete" })
-                    </div>
-                    <div class="form-group">
-                        <label for="incidentSupportFile">File input</label>
-                        <input type="file" id="incidentSupportFile">
-                        <p class="help-block">Upload incident documentation.</p>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Check me out
-                        </label>
-                    </div>
-                </div><!-- /.box-body -->
-            
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <input type="button" class="btn btn-warning"  value="Cancel"
-                           onclick="javascript:document.location.href='@Url.Action("Default", "Incidents")'" />
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="incidentName">Incident Title</label>
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Incident Title" })
                 </div>
+                <div class="form-group">
+                    <label for="incidentDescr">Incident Description</label>
+                    @Html.TextAreaFor(model => model.Descr, 3, 20, new { @class = "form-control", placeholder = "Incident Description" })
+                </div>
+                <div class="form-group">
+                    <label for="percentageComplete">Percentage Complete</label>
+                    @Html.TextBoxFor(model => model.PercentageComplete, new { @class = "form-control", placeholder = "Percentage Complete" })
+                </div>
+                <div class="form-group">
+                    <label for="incidentSupportFile">File input</label>
+                    <input type="file" id="incidentSupportFile">
+                    <p class="help-block">Upload incident documentation.</p>
+                </div>
+                <div class="form-group">
+                    <label for="Location">Location</label>
+                    @Html.TextBoxFor(model => model.Location, new { @class = "form-control", placeholder = "Location where incident occurred" })
+                </div>
+                <div class="form-group">
+                    <label for="IncidentDate">Incident Date</label>
+                    @Html.TextBoxFor(model => model.IncidentDate, new { @class = "form-control", placeholder = "Date incident occurred", Id = "IncidentDate" })
+                </div>
+                <!-- time Picker -->
+                <div class="bootstrap-timepicker">
+                    <div class="form-group">
+                        <label for="IncidentTime">Incident Time</label>
+                        <div class="input-group">
+                            @Html.TextBoxFor(model => model.IncidentTime, new { @class = "form-control timepicker", placeholder = "Time incident occurred", Id = "IncidentTime" })
+                            <div class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                        </div><!-- /.input group -->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Category">Category</label>
+                    @Html.DropDownListFor(model => model.Category_Id, Model.Categories, new { @class = "form-control", placeholder = "Incident category" })
+                </div>
+                <div class="form-group">
+                    <label for="Priority">Priority</label>
+                    @Html.DropDownListForEnum(m => m.Priority, new { @class = "form-control", placeholder = "Incident priority" })
+                </div>
+                <!-- time Picker -->
+                <div class="bootstrap-timepicker">
+                    <div class="form-group">
+                        <label>Time picker:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control timepicker" />
+                            <div class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                        </div><!-- /.input group -->
+                    </div><!-- /.form group -->
+                </div>
+            </div><!-- /.box-body -->
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <input type="button" class="btn btn-warning" value="Cancel"
+                       onclick="javascript:document.location.href='@Url.Action("Default", "Incidents")'" />
+            </div>
             @*</form>*@
         }
     </div><!-- /.box -->
 </div>
+
+
+<script type="text/javascript">
+    $(function () {
+        //Date picker
+        $('#IncidentDate').datepicker();
+        //Timepicker
+        $(".timepicker").timepicker({
+            showInputs: false
+        });
+    });
+</script>

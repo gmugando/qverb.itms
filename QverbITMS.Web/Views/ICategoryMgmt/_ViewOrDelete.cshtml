@@ -1,0 +1,49 @@
+﻿@model QverbITMS.Web.ViewModels.IncidentCategoryVM
+
+<div class="col-md-6">
+    <!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Incident Category</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        @using (Html.BeginForm())
+        {
+            @*@Html.AntiForgeryToken()*@
+            @Html.ValidationSummary()
+
+            <div class="box-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Category)
+                    @Html.LabelFor(model => model.Category, new { @class = "form-control", placeholder = "Category" })
+                    @Html.ValidationMessageFor(model => model.Category)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Descr)
+                    @Html.LabelFor(model => model.Descr, new { @class = "form-control", placeholder = "Category Description" })
+                    @Html.ValidationMessageFor(model => model.Descr)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Active)<br />
+                    @if (Model.Active)
+                    {
+                        <span class="label label-success">Active</span>;
+                    }
+                    else
+                    {
+                        <span class="label label-warning">Inactive</span>;
+                    }
+                </div>
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <input type="button" class="btn btn-warning" value="Cancel"
+                       onclick="javascript:document.location.href='@Url.Action("Default", "ICategoryMgmt")'" />
+            </div>
+            @*</form>*@
+        }
+    </div><!-- /.box -->
+</div>
+

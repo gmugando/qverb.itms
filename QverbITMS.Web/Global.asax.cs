@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QverbITMS.Core.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -28,6 +29,10 @@ namespace QverbITMS.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+
+            // initialize engine context
+            EngineContext.Initialize(false);   
         }
     }
 }

@@ -25,6 +25,8 @@ namespace QverbITMS.Web
                "~/Scripts/plugins/daterangepicker/daterangepicker.js",
                 // datepicker 
                "~/Scripts/plugins/datepicker/bootstrap-datepicker.js",
+                // timepicker
+               "~/Scripts/plugins/timepicker/bootstrap-timepicker.js",
                 // Bootstrap WYSIHTML5 
                "~/Scripts/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js",
                 // iCheck 
@@ -72,6 +74,8 @@ namespace QverbITMS.Web
                    "~/Content/themes/adminlte/css/datepicker/datepicker3.css",
                 // Daterange picker 
                    "~/Content/themes/adminlte/css/daterangepicker/daterangepicker-bs3.css",
+                // Time Picker
+                   "~/Content/themes/adminlte/css/timepicker/bootstrap-timepicker.css",
                 // bootstrap wysihtml5 - text editor 
                    "~/Content/themes/adminlte/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css",
                 // Theme style
