@@ -26,6 +26,12 @@ namespace QverbITMS.Data
             this.AutoCommitEnabled = true;
         }
 
+        public EfRepository()
+        {
+            this._context = new QverbITMSObjectContext();
+            this.AutoCommitEnabled = true;
+        }
+
         #region interface members
 
         public virtual IQueryable<T> Table
@@ -53,9 +59,17 @@ namespace QverbITMS.Data
             return this.Entities.Create();
         }
 
-        public T GetById(object id)
+        public T GetById(object id, string includeProperties = "")
         {
-            return this.Entities.Find(id);
+            //T item = this.Entities.Find(id);
+            IQueryable<T> query = this.Entities;
+
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                query = Include(query, includeProperties);
+            }
+
+            return query.FirstOrDefault(o => o.Id == (int)id);
         }
 
         public void Insert(T entity)
@@ -124,10 +138,8 @@ namespace QverbITMS.Data
 
             if (this.AutoCommitEnabled)
             {
-                if (!InternalContext.Configuration.AutoDetectChangesEnabled)
-                {
-                    InternalContext.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-                }
+                //InternalContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+                InternalContext.Entry(entity).State = System.Data.Entity.EntityState.Modified;
                 _context.SaveChanges();
             }
             else
@@ -200,9 +212,22 @@ namespace QverbITMS.Data
 
         public bool AutoCommitEnabled { get; set; }
 
-        public IQueryable<T> GetByFilter(Expression<Func<T, bool>> filter)
+        public IQueryable<T> GetByFilter(Expression<Func<T, bool>> filter, string includeProperties = "")
         {
-            return this.Entities.Where(filter);
+            IQueryable<T> query = this.Entities;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                query = Include(query, includeProperties);
+            }
+
+            return query;
+
         }
 
         #endregion
@@ -225,6 +250,19 @@ namespace QverbITMS.Data
                 return _entities as DbSet<T>;
             }
         }
+
+        public virtual IQueryable<T> Include(IQueryable<T> query, string includeList)
+        {
+            foreach (var includeProperty in includeList.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return query;
+        }
+
+
+
 
         #endregion
 

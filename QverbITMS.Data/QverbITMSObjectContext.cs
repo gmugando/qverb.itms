@@ -24,7 +24,7 @@ namespace QverbITMS.Data
         {
             var initializer = new QverbITMSDatabaseInitializer<QverbITMSObjectContext, MigrationsConfiguration>
             {
-                TablesToCheck = new[] { "Incidents", "Tasks", "Projects" }
+                TablesToCheck = new[] { "Incidents", "Tasks", "Projects" , "TaskCategory"}
             };
 
             Database.SetInitializer<QverbITMSObjectContext>(initializer);
@@ -62,6 +62,12 @@ namespace QverbITMS.Data
 
             ////...or do it manually below. For example,
             modelBuilder.Configurations.Add(new IncidentMap());
+            modelBuilder.Configurations.Add(new ProjectMap());
+            modelBuilder.Configurations.Add(new TaskCategoryMap());
+            modelBuilder.Configurations.Add(new UserProfileMap());
+
+            // if prod use this schema
+            // modelBuilder.HasDefaultSchema("wunc-za");
 
             base.OnModelCreating(modelBuilder);
         }

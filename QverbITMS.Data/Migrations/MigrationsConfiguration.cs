@@ -13,8 +13,8 @@ namespace QverbITMS.Data.Migrations
     {
         public MigrationsConfiguration()
         {
-            AutomaticMigrationsEnabled = false;
-            ContextKey = "QverbITMS.Core";
+            AutomaticMigrationsEnabled = true;
+            //ContextKey = "QverbITMS.Core";
         }
 
         protected override void Seed(QverbITMSObjectContext context)

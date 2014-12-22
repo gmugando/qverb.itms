@@ -107,7 +107,7 @@ namespace QverbITMS.Data
 
             if (hooksEnabled)
             {
-               // this.EventPublisher.Publish(new PreActionHookEvent { ModifiedEntries = modifiedHookEntries, RequiresValidation = true });
+                // this.EventPublisher.Publish(new PreActionHookEvent { ModifiedEntries = modifiedHookEntries, RequiresValidation = true });
             }
 
             //modifiedEntries.Each(x => _hookedEntries.Remove(x));
@@ -357,17 +357,17 @@ namespace QverbITMS.Data
 
         public override int SaveChanges()
         {
-            IList<DbEntityEntry> modifiedEntries;
-            HookedEntityEntry[] modifiedHookEntries;
-            PerformPreSaveActions(out modifiedEntries, out modifiedHookEntries);
+            //IList<DbEntityEntry> modifiedEntries;
+            //HookedEntityEntry[] modifiedHookEntries;
+            //PerformPreSaveActions(out modifiedEntries, out modifiedHookEntries);
 
-            // SAVE NOW!!!
-            bool validateOnSaveEnabled = this.Configuration.ValidateOnSaveEnabled;
-            this.Configuration.ValidateOnSaveEnabled = false;
+            //// SAVE NOW!!!
+            //bool validateOnSaveEnabled = this.Configuration.ValidateOnSaveEnabled;
+            //this.Configuration.ValidateOnSaveEnabled = false;
             int result = this.Commit();
-            this.Configuration.ValidateOnSaveEnabled = validateOnSaveEnabled;
+            //this.Configuration.ValidateOnSaveEnabled = validateOnSaveEnabled;
 
-            PerformPostSaveActions(modifiedEntries, modifiedHookEntries);
+            //PerformPostSaveActions(modifiedEntries, modifiedHookEntries);
 
             return result;
         }
@@ -456,22 +456,22 @@ namespace QverbITMS.Data
 
         protected internal bool IsSqlServer2012OrHigher()
         {
-           
+
             if (!s_isSqlServer2012OrHigher.HasValue)
             {
-            //    try
-            //    {
-            //        // TODO: actually we should cache this value by connection (string).
-            //        // But fact is: it's quite unlikely that multiple DB versions are used within a single application scope.
-            //        var info = this.GetSqlServerInfo();
-            //        string productVersion = info.ProductVersion;
-            //        int version = productVersion.Split(new char[] { '.' })[0].ToInt();
-            //        s_isSqlServer2012OrHigher = version >= 11;
-            //    }
-            //    catch
-            //    {
-            //        s_isSqlServer2012OrHigher = false;
-            //    }
+                //    try
+                //    {
+                //        // TODO: actually we should cache this value by connection (string).
+                //        // But fact is: it's quite unlikely that multiple DB versions are used within a single application scope.
+                //        var info = this.GetSqlServerInfo();
+                //        string productVersion = info.ProductVersion;
+                //        int version = productVersion.Split(new char[] { '.' })[0].ToInt();
+                //        s_isSqlServer2012OrHigher = version >= 11;
+                //    }
+                //    catch
+                //    {
+                //        s_isSqlServer2012OrHigher = false;
+                //    }
             }
 
             return false;
@@ -617,6 +617,8 @@ namespace QverbITMS.Data
                     {
                         entry.Reload();
                     }
+
+
                 }
             }
             while (commitFailed);

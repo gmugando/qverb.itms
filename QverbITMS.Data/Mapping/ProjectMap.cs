@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace QverbITMS.Data.Mapping
 {
-    public class IncidentMap : EntityTypeConfiguration<Incident>
+    public class ProjectMap : EntityTypeConfiguration<Project>
     {
-        public IncidentMap()
+        public ProjectMap()
         {
-            this.ToTable("Incidents");
+            this.ToTable("Projects");
             this.HasKey(i => i.Id);
-            
         }
     }
 }
