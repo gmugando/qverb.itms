@@ -32,7 +32,7 @@ namespace QverbITMS.Core.Data
         /// </summary>
         /// <param name="id">The id of the entity. This can also be a composite key.</param>
         /// <returns>The resolved entity</returns>
-        T GetById(object id);
+        T GetById(object id, string includeProperties = "");
 
         /// <summary>
         /// Marks the entity instance to be saved to the store.
@@ -114,5 +114,12 @@ namespace QverbITMS.Core.Data
         /// such as insert, delete or update should be committed immediately.
         /// </summary>
         bool AutoCommitEnabled { get; set; }
+
+        /// <summary>
+        /// Gets a list of items based
+        /// on the filter.
+        /// </summary>
+        IQueryable<T> GetByFilter(Expression<Func<T, bool>> filter, string includeProperties = "");
+
     }
 }
