@@ -9,10 +9,10 @@ namespace QverbITMS.Core.Domain
     public class Project : BaseEntity
     {
         [Required]
-        [Display(Name = "Category")]
+        [Display(Name = "Name")]
         public string Name { get; set; }
         [Required]
-        [Display(Name = "Category")]
+        [Display(Name = "Descr")]
         public string Descr { get; set; }
         [Required]
         [Display(Name = "StartDate")]
