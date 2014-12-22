@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QverbITMS.Services", "Qverb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QverbITMS.Web", "QverbITMS.Web\QverbITMS.Web.csproj", "{1AD14573-6FD1-463A-9E63-34D492247BDA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QverbITMS.Web.Framework", "QverbITMS.Web.Framework\QverbITMS.Web.Framework.csproj", "{B978FEAF-8A65-4581-9B4C-270BED519EAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1AD14573-6FD1-463A-9E63-34D492247BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AD14573-6FD1-463A-9E63-34D492247BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AD14573-6FD1-463A-9E63-34D492247BDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B978FEAF-8A65-4581-9B4C-270BED519EAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B978FEAF-8A65-4581-9B4C-270BED519EAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B978FEAF-8A65-4581-9B4C-270BED519EAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B978FEAF-8A65-4581-9B4C-270BED519EAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
