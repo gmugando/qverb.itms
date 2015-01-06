@@ -193,5 +193,46 @@ namespace QverbITMS.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Manage(int id = 0)
+        {
+            ViewBag.Header = "Manage Incident";
+            ViewBag.SubHeader = "Manage";
+            var incidentVM = new IncidentVM();
+            var incident = _incidentService.GetIncidentById(id);
+            if (incident == null)
+                return HttpNotFound();
+
+            incidentVM.Id = incident.Id;
+            incidentVM.Name = incident.Name;
+            incidentVM.Descr = incident.Descr;
+            incidentVM.LoggedBy = incident.LoggedBy;
+            incidentVM.LoggedDate = incident.LoggedDate;
+            incidentVM.PercentageComplete = incident.PercentageComplete;
+            incidentVM.Status = incident.Status;
+            incidentVM.Location = incident.Location;
+            incidentVM.IncidentDate = incident.IncidentDate;
+            incidentVM.IncidentTime = incident.IncidentTime;
+            incidentVM.Category_Id = incident.Category.Id;
+            incidentVM.Category = incident.Category;
+            incidentVM.Priority = incident.Priority;
+
+            // Here we are selecting all the available categories
+            // from the database and projecting them to the IEnumerable<SelectListItem>
+            incidentVM.Categories = _categoryService.GetAllByStatus(true).ToList().Select(x => new SelectListItem
+            {
+                Value = x.Id.ToString(),
+                Text = x.Category
+            });
+
+            return View(incidentVM);
+        }
+
+        [HttpPost]
+        public ActionResult Manage(IncidentVM incidentVM)
+        {
+            return View(incidentVM);
+        }
+
     }
 }

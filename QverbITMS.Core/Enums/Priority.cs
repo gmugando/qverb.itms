@@ -12,7 +12,16 @@ namespace QverbITMS.Core.Enums
         High = 3,
         Medium = 2,
         Low = 1
-	} 
+	}
+
+    public enum StatusEnum
+    {
+        Deferred = 5,
+        WaitingForSomeone = 4,
+        Completed = 3,
+        InProgress = 2,
+        NotStarted = 1
+    } 
 
 
 }

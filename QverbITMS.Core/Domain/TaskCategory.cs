@@ -9,10 +9,12 @@ namespace QverbITMS.Core.Domain
     public class TaskCategory : BaseEntity
     {
         [Required]
-        [Display(Name = "Name")]
+        [Display(Name = "Category")]
         public string Name { get; set; }
         [Required]
         [Display(Name = "Description")]
         public string Descr { get; set; }
+        [Required]
+        public bool Active { get; set; }
     }
 }

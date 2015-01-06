@@ -30,6 +30,8 @@ namespace QverbITMS.Web.Framework
             builder.RegisterType<IncidentService>().As<IIncidentService>().InstancePerLifetimeScope();
             builder.RegisterType<IncidentCategoryService>().As<IIncidentCategoryService>().InstancePerLifetimeScope();
             builder.RegisterType<FormsAuthenticationService>().As<IAuthenticationService>().InstancePerLifetimeScope();
+            builder.RegisterType<TaskCategoryService>().As<ITaskCategoryService>().InstancePerLifetimeScope();
+            builder.RegisterType<ProjectManagementService>().As<IProjectManagementService>().InstancePerLifetimeScope();
         }
 
         public int Order

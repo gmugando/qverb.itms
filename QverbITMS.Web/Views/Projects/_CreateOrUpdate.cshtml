@@ -1,0 +1,81 @@
+﻿@model QverbITMS.Web.ViewModels.ProjectVM
+@using QverbITMS.Web.Framework.Extensions;
+
+<!-- jQuery -->
+<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<div class="col-md-6">
+    <!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Project</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        @using (Html.BeginForm())
+        {
+            @*@Html.AntiForgeryToken()*@
+            @Html.ValidationSummary()
+
+            <div class="box-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name)
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Project Name" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Descr)
+                    @Html.TextBoxFor(model => model.Descr, new { @class = "form-control", placeholder = "Project Description" })
+                    @Html.ValidationMessageFor(model => model.Descr)
+                </div>
+
+                <div class="form-group">
+                    <label for="StartDate">Start Date</label>
+                    @Html.TextBoxFor(model => model.StartDate, new { @class = "form-control", placeholder = "Date project starts", Id = "StartDate" })
+                </div>
+
+                <div class="form-group">
+                    <label for="EndDate">End Date</label>
+                    @Html.TextBoxFor(model => model.EndDate, new { @class = "form-control", placeholder = "Date project ends", Id = "EndDate" })
+                </div>
+                
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProjectOwner)
+                    @Html.TextBoxFor(model => model.ProjectOwner, new { @class = "form-control", placeholder = "Project Owner" })
+                    @Html.ValidationMessageFor(model => model.ProjectOwner)
+                </div>
+
+                <div class="form-group">
+                    <label for="Priority">Priority</label>
+                    @Html.DropDownListForEnum(m => m.Priority, new { @class = "form-control", placeholder = "Project priority" })
+                </div>
+
+                <div class="form-group">
+                    <label for="Priority">Status</label>
+                    @Html.DropDownListForEnum(m => m.Status, new { @class = "form-control", placeholder = "Project status" })
+                </div>
+
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.DateCreated)
+                    @Html.HiddenFor(m => m.CreatedBy)
+                </div>
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <input type="button" class="btn btn-warning" value="Cancel"
+                       onclick="javascript:document.location.href='@Url.Action("Projects", "Projects")'" />
+            </div>
+            @*</form>*@
+        }
+    </div><!-- /.box -->
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        //Date picker
+        $('#StartDate').datepicker();
+        $('#EndDate').datepicker();
+    });
+</script>

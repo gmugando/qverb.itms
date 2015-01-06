@@ -219,6 +219,8 @@
     <Compile Include="Controllers\IncidentsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
+    <Compile Include="Controllers\TaskCategoryController.cs" />
+    <Compile Include="Extensions\MappingExtension.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -235,6 +237,7 @@
     <Compile Include="ViewModels\DashboardVM.cs" />
     <Compile Include="ViewModels\IncidentCategoryVM.cs" />
     <Compile Include="ViewModels\IncidentVM.cs" />
+    <Compile Include="ViewModels\ProjectVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\adminlte\css\AdminLTE.css" />
@@ -673,6 +676,18 @@
     <Content Include="Views\ICategoryMgmt\Edit.cshtml" />
     <Content Include="Views\ICategoryMgmt\Delete.cshtml" />
     <Content Include="Views\ICategoryMgmt\_ViewOrDelete.cshtml" />
+    <Content Include="Views\Incidents\_Manage.cshtml" />
+    <Content Include="Views\Incidents\Manage.cshtml" />
+    <Content Include="Views\TaskCategory\Default.cshtml" />
+    <Content Include="Views\TaskCategory\Create.cshtml" />
+    <Content Include="Views\TaskCategory\Edit.cshtml" />
+    <Content Include="Views\TaskCategory\Delete.cshtml" />
+    <Content Include="Views\TaskCategory\_CreateOrUpdate.cshtml" />
+    <Content Include="Views\TaskCategory\_ViewOrDelete.cshtml" />
+    <Content Include="Views\Projects\Projects.cshtml" />
+    <Content Include="Views\Projects\Create.cshtml" />
+    <Content Include="Views\Projects\_CreateOrUpdate.cshtml" />
+    <Content Include="Views\Projects\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QverbITMS.Core\QverbITMS.Core.csproj">

@@ -10,6 +10,6 @@ namespace QverbITMS.Web.ViewModels
         public int NewIncidents { get; set; }
         public int ResolvedIncidents { get; set; }
         public int UserReg { get; set; }
-
+        public int ProjectsCount { get; set; }
     }
 }

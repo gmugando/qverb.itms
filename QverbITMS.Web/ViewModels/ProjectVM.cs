@@ -1,14 +1,16 @@
-﻿using System;
+﻿using QverbITMS.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using QverbITMS.Core.Enums;
+using System.Web;
 
-namespace QverbITMS.Core.Domain
+namespace QverbITMS.Web.ViewModels
 {
-    public class Project : BaseEntity
+    public class ProjectVM
     {
+        [Required]
+        public int Id { get; set; }
         [Required]
         [Display(Name = "Name")]
         public string Name { get; set; }

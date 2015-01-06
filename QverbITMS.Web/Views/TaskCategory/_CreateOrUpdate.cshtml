@@ -1,0 +1,42 @@
+﻿@model QverbITMS.Core.Domain.TaskCategory
+
+<div class="col-md-6">
+    <!-- general form elements -->
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Task Category</h3>
+        </div><!-- /.box-header -->
+        <!-- form start -->
+        @using (Html.BeginForm())
+        {
+            @*@Html.AntiForgeryToken()*@
+            @Html.ValidationSummary()
+
+            <div class="box-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name)
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Category" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Descr)
+                    @Html.TextBoxFor(model => model.Descr, new { @class = "form-control", placeholder = "Category Description" })
+                    @Html.ValidationMessageFor(model => model.Descr)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Active)
+                    @Html.CheckBoxFor(model => model.Active, new { @class = "form-control" })
+                    @*@Html.ValidationMessageFor(model => model.Active)*@
+                </div>
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <input type="button" class="btn btn-warning" value="Cancel"
+                       onclick="javascript:document.location.href='@Url.Action("Default", "TaskCategory")'" />
+            </div>
+            @*</form>*@
+        }
+    </div><!-- /.box -->
+</div>

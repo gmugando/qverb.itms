@@ -14,6 +14,7 @@ namespace QverbITMS.Data.Mapping
         {
             this.ToTable("UserProfile");
             this.HasKey(i => new { i.Id });
+            this.Ignore(i => i.Password);
         }
     }
 }

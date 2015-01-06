@@ -43,6 +43,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -56,6 +57,7 @@
     <Compile Include="Mapping\IncidentMap.cs" />
     <Compile Include="Mapping\ProjectMap.cs" />
     <Compile Include="Mapping\TaskCategoryMap.cs" />
+    <Compile Include="Mapping\TaskMap.cs" />
     <Compile Include="Mapping\UserProfileMap.cs" />
     <Compile Include="Migrations\201412111017095_IncidentColumns.cs" />
     <Compile Include="Migrations\201412111017095_IncidentColumns.Designer.cs">
@@ -72,6 +74,18 @@
     <Compile Include="Migrations\201412111343125_IncidentCategories.cs" />
     <Compile Include="Migrations\201412111343125_IncidentCategories.Designer.cs">
       <DependentUpon>201412111343125_IncidentCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412240835286_Task.cs" />
+    <Compile Include="Migrations\201412240835286_Task.Designer.cs">
+      <DependentUpon>201412240835286_Task.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412240852060_TaskUpdate.cs" />
+    <Compile Include="Migrations\201412240852060_TaskUpdate.Designer.cs">
+      <DependentUpon>201412240852060_TaskUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412240854368_Task1.cs" />
+    <Compile Include="Migrations\201412240854368_Task1.Designer.cs">
+      <DependentUpon>201412240854368_Task1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\MigrationsConfiguration.cs" />
     <Compile Include="ObjectContextBase.cs" />
@@ -103,6 +117,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412111343125_IncidentCategories.resx">
       <DependentUpon>201412111343125_IncidentCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412240835286_Task.resx">
+      <DependentUpon>201412240835286_Task.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412240852060_TaskUpdate.resx">
+      <DependentUpon>201412240852060_TaskUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412240854368_Task1.resx">
+      <DependentUpon>201412240854368_Task1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

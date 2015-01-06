@@ -1,16 +1,13 @@
-﻿@model IEnumerable<QverbITMS.Core.Domain.Incident>
-
+﻿@model IEnumerable<QverbITMS.Web.ViewModels.ProjectVM>
 @{
-    ViewBag.Title = "Incidents";
+    ViewBag.Title = "Projects";
 }
-
-
 <!-- jQuery -->
 <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
 <script type="text/javascript">
     $(function () {
-        $('#IncidentsTable').dataTable({
+        $('#projectsTable').dataTable({
             "bPaginate": true,
             "bLengthChange": true,
             "bFilter": false,
@@ -22,18 +19,13 @@
 
 </script>
 
-<h2>Incidents</h2>
-
-
-<div class="box-header">
-  
-</div>
+<h2>Projects</h2>
 
 <div class="row">
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Incidents List</h3>
+                <h3 class="box-title">Projects</h3>
                 <div class="box-tools">
                     <div class="input-group">
                         <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search" />
@@ -44,14 +36,14 @@
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-                <table class="table table-hover" id="IncidentsTable">
+                <table class="table table-hover" id="projectsTable">
                     <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Date Logged</th>
-                            <th>Status</th>
+                            <th>Name</th>
                             <th>Description</th>
-                            <th>Progress</th>
+                            <th>Status</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
                             <th></th>
                             <th></th>
                         </tr>
@@ -64,28 +56,27 @@
                                     @Html.DisplayFor(modelItem => item.Name)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.LoggedDate)
+                                    @Html.DisplayFor(modelItem => item.Descr)
                                 </td>
                                 <td>
-                                    @if (@item.Status)
+                                    @item.Status.ToString()
+                                    @*@if (@item.Status)
                                     {
                                         <span class="label label-success">Approved</span>;
                                     }
                                     else
                                     {
                                         <span class="label label-warning">Pending</span>;
-                                    }
+                                    }*@
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Descr)
+                                    @Html.DisplayFor(modelItem => item.StartDate)
                                 </td>
                                 <td>
-                                    <div class="progress xs progress-striped active">
-                                        <div class="progress-bar progress-bar-success" style="width: @string.Format("{0}%", item.PercentageComplete)"></div>
-                                    </div>
+                                    @Html.DisplayFor(modelItem => item.EndDate)
                                 </td>
                                 <td>
-                                    <span class="badge bg-green">@string.Format("{0}%", item.PercentageComplete)</span>
+                                    
                                 </td>
                                 <td>
                                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -103,7 +94,7 @@
 </div>
 
 <div class="box-footer ">
-    <a class="btn btn-primary" href="@Url.Action("Create", "Incidents")">
+    <a class="btn btn-primary" href="@Url.Action("Create", "Projects")">
         Add
     </a>
 </div>

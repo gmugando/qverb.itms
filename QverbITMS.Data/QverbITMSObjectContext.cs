@@ -12,6 +12,8 @@ using QverbITMS.Data.Mapping;
 using QverbITMS.Data.Migrations;
 using QverbITMS.Data.Setup;
 
+using System.Web.Hosting;
+
 namespace QverbITMS.Data
 {
     /// <summary>
@@ -24,7 +26,7 @@ namespace QverbITMS.Data
         {
             var initializer = new QverbITMSDatabaseInitializer<QverbITMSObjectContext, MigrationsConfiguration>
             {
-                TablesToCheck = new[] { "Incidents", "Tasks", "Projects" , "TaskCategory"}
+                TablesToCheck = new[] { "Incidents", "Tasks", "Projects", "TaskCategory" }
             };
 
             Database.SetInitializer<QverbITMSObjectContext>(initializer);
@@ -45,29 +47,30 @@ namespace QverbITMS.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-           ////dynamically load all configuration
-           //var typesToRegister = from t in Assembly.GetExecutingAssembly().GetTypes()
-           //                       where t.Namespace.HasValue() &&
-           //                             t.BaseType != null &&
-           //                             t.BaseType.IsGenericType
-           //                       let genericType = t.BaseType.GetGenericTypeDefinition()
-           //                       where genericType == typeof(EntityTypeConfiguration<>) || genericType == typeof(ComplexTypeConfiguration<>)
-           //                       select t;
+            ////dynamically load all configuration
+            //var typesToRegister = from t in Assembly.GetExecutingAssembly().GetTypes()
+            //                       where t.Namespace.HasValue() &&
+            //                             t.BaseType != null &&
+            //                             t.BaseType.IsGenericType
+            //                       let genericType = t.BaseType.GetGenericTypeDefinition()
+            //                       where genericType == typeof(EntityTypeConfiguration<>) || genericType == typeof(ComplexTypeConfiguration<>)
+            //                       select t;
 
-           // foreach (var type in typesToRegister)
-           // {
-           //     dynamic configurationInstance = Activator.CreateInstance(type);
-           //     modelBuilder.Configurations.Add(configurationInstance);
-           // }
+            // foreach (var type in typesToRegister)
+            // {
+            //     dynamic configurationInstance = Activator.CreateInstance(type);
+            //     modelBuilder.Configurations.Add(configurationInstance);
+            // }
 
             ////...or do it manually below. For example,
             modelBuilder.Configurations.Add(new IncidentMap());
             modelBuilder.Configurations.Add(new ProjectMap());
             modelBuilder.Configurations.Add(new TaskCategoryMap());
             modelBuilder.Configurations.Add(new UserProfileMap());
+            modelBuilder.Configurations.Add(new TaskMap());
 
             // if prod use this schema
-            // modelBuilder.HasDefaultSchema("wunc-za");
+            //modelBuilder.HasDefaultSchema("wunc-za");
 
             base.OnModelCreating(modelBuilder);
         }
